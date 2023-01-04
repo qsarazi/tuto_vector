@@ -75,10 +75,12 @@ class vector {
         if (count != 0)
             temp = new value_type[count];
 
-        memcpy(temp, _data, (_size < count ? _size : count));
+        memcpy(temp, _data, (_size < count ? _size : count) * sizeof(value_type));
         while (_size < count)
             temp[_size++] = value;
         std::swap(_data, temp);
+        _size = count;
+        delete[] temp;
     }
 
   private:
