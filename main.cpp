@@ -2,7 +2,6 @@
 #include <functional>
 #include <iostream>
 #include <type_traits>
-#include <vector>
 
 #if __has_include("vector.hpp")
 #include "vector.hpp"
