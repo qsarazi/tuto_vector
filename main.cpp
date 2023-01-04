@@ -91,7 +91,7 @@ bool test_resize() {
     
     v.resize(2);
     v.resize(4, -2);
-    for (vector<int>::size_type i = 0; i < v.size(); ++i)
+    for (vector<int>::size_type i = 0; i < v.size(); ++i) {
         if (i < 2) {
             if (v[i] != i + 1)
                 return false;
@@ -99,7 +99,7 @@ bool test_resize() {
             if (v[i] != -2)
                 return false;
         }
-
+    }
     return v.size() == 4;
 }
 
