@@ -124,6 +124,21 @@ bool test_sized_constructors_with_value() {
     return true;
 }
 
+bool test_equal() {
+    vector<int> v1(3, 6);
+    vector<int> v2(4, 6);
+    bool ok = true;
+
+    ok &= (v1 != v2);
+    
+    v1.push_back(42);
+    v2[3] = 42;
+
+    ok &= (v1 == v2);
+
+    return ok;
+}
+
 std::vector<std::pair<std::string, std::function<bool()>>> test_functions{
     {"test_default_constructor", test_default_constructor},
     {"test_data", test_data},
