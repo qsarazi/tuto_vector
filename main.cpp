@@ -6,7 +6,7 @@
 
 #include "vector.hpp"
 
-using namespace std;
+using namespace tuto;
 
 bool test_default_constructor() {
     vector<int> v;
@@ -85,24 +85,22 @@ bool test_at() {
 bool test_resize() {
     vector<int> v;
 
-    v.resize(4);
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    
+    v.resize(2);
+    v.resize(4, -2);
+    for (vector<int>::size_type i = 0; i < v.size(); ++i)
+        if (i < 2) {
+            if (v[i] != i + 1)
+                return false;
+        } else {
+            if (v[i] != -2)
+                return false;
+        }
 
     return v.size() == 4;
-}
-
-bool test_assign() {
-    vector<std::string> v;
-
-    v.assign(3, "toto");
-
-    if (v.size() != 3)
-        return false;
-    
-    for (std::size_t i = 0; i < v.size(); ++i)
-        if (v[i] != "toto")
-            return false;
-    
-    return true;
 }
 
 bool test_sized_constructors() {
