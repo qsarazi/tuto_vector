@@ -2,9 +2,10 @@
 #define __VECTOR_HPP__
 
 #include <cstddef>
+#include <cstring>
 
 #include <exception>
-#include <iostream>
+
 namespace tuto {
 
 template<class T>
@@ -81,6 +82,20 @@ class vector {
         std::swap(_data, temp);
         _size = count;
         delete[] temp;
+    }
+
+    bool operator==(const vector &other) const {
+        if (_size != other._size)
+            return false;
+        
+        return memcmp(_data, other._data, _size * sizeof(value_type)) == 0;
+    }
+
+    bool operator!=(const vector &other) const {
+        if (_size != other._size)
+            return true;
+        
+        return memcmp(_data, other._data, _size * sizeof(value_type)) != 0;
     }
 
   private:
