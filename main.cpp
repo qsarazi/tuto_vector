@@ -4,9 +4,13 @@
 #include <type_traits>
 #include <vector>
 
+#if __has_include("vector.hpp")
 #include "vector.hpp"
-
 using namespace tuto;
+#else
+#include <vector>
+using namespace std;
+#endif
 
 bool test_default_constructor() {
     vector<int> v;
@@ -139,6 +143,74 @@ bool test_equal() {
     return ok;
 }
 
+bool test_copy_constructor() {
+    vector<int> v1(3, 42);
+    vector<int> v2(v1);
+
+    return v1 == v2;
+}
+
+bool test_copy_assignment() {
+    vector<int> v1(3, 42);
+    vector<int> v2;
+
+    v2.push_back(2);
+    v1 = v2;
+
+    return v1 == v2;
+}
+/*
+bool test_swap() {
+    vector<int> v1(3, 42);
+    vector<int> v2(2, 24);
+
+    std::swap(v1, v2);
+
+    if (v2.size() != 3)
+        return false;
+    for (size_t i = 0; i < v2.size(); ++i)
+        if (v2[i] != 42)
+            return false;
+    
+    if (v1.size() != 2)
+        return false;
+    for (size_t i = 0; i < v1.size(); ++i)
+        if (v1[i] != 24)
+            return false;
+
+    return true;
+}
+
+bool test_move_constructor() {
+    vector<int> v1(3, 42);
+    vector<int> v2(std::move(v1));
+
+    if (v2.size() != 3)
+        return false;
+    
+    for (size_t i = 0; i < v2.size(); ++i)
+        if (v2[i] != 42)
+            return false;
+
+    return true;
+}
+
+bool test_move_assignement() {
+    vector<int> v1(3, 42);
+    vector<int> v2(2, 24);
+
+    v2 = std::move(v1);
+
+    if (v2.size() != 3)
+        return false;
+    
+    for (size_t i = 0; i < v2.size(); ++i)
+        if (v2[i] != 42)
+            return false;
+
+    return true;
+}
+*/
 std::vector<std::pair<std::string, std::function<bool()>>> test_functions{
     {"test_default_constructor", test_default_constructor},
     {"test_data", test_data},
@@ -149,6 +221,11 @@ std::vector<std::pair<std::string, std::function<bool()>>> test_functions{
     {"test_sized_constructors", test_sized_constructors},
     {"test_sized_constructors_with_value", test_sized_constructors_with_value},
     {"test_equal", test_equal},
+    {"test_copy_constructor", test_copy_constructor},
+    {"test_copy_assignment", test_copy_assignment},
+    // {"test_swap", test_swap},
+    // {"test_move_constructor", test_move_constructor},
+    // {"test_move_assignement", test_move_assignement},
 };
 
 std::size_t max_name_size = std::string("test_sized_constructors_with_value").size();
