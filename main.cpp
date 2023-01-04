@@ -147,7 +147,8 @@ std::vector<std::pair<std::string, std::function<bool()>>> test_functions{
     {"test_access", test_access},
     {"test_resize", test_resize},
     {"test_sized_constructors", test_sized_constructors},
-    {"test_sized_constructors_with_value", test_sized_constructors_with_value}
+    {"test_sized_constructors_with_value", test_sized_constructors_with_value},
+    {"test_equal", test_equal},
 };
 
 std::size_t max_name_size = std::string("test_sized_constructors_with_value").size();
