@@ -216,6 +216,7 @@ std::vector<std::pair<std::string, std::function<bool()>>> test_functions{
     {"test_pushback", test_pushback},
     {"test_size", test_size},
     {"test_access", test_access},
+    {"test_at", test_at},
     {"test_resize", test_resize},
     {"test_sized_constructors", test_sized_constructors},
     {"test_sized_constructors_with_value", test_sized_constructors_with_value},
