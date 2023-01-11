@@ -21,8 +21,11 @@ bool test_pushback() {
     vector<int> v;
     
     v.push_back(2);
-    
+    //int *tab=v.data();
+    //std::cout << "appelle " <<tab << ',' << tab[0]<< ','; 
+
     return v.data()[0] == 2;
+    //return tab[0]==2;
 }
 
 bool test_size() {
@@ -75,5 +78,10 @@ void test_all() {
 
 int main(int, char**) {
     test_all();
+
+    std::vector<float> vf;
+
+    // for (std::vector<float>::iterator it = vf.begin(); )
+
     return 0;
 }
