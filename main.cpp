@@ -4,9 +4,18 @@
 #include <type_traits>
 #include <vector>
 
+<<<<<<< Updated upstream
 #include "vector.hpp"
 
 using namespace tuto;
+=======
+#if __has_include("vector.hpp")
+#include "vector.hpp"
+using namespace tuto;
+#else
+using namespace std;
+#endif
+>>>>>>> Stashed changes
 
 bool test_default_constructor() {
     vector<int> v;
