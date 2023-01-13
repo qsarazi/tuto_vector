@@ -35,8 +35,26 @@ class vector {
         _size = count;
     }
 
+    vector(const vector &other) {
+        if (this == &other)
+            return;
+        
+        _size = other._size;
+        if (_size == 0)
+            return;
+        _data = new T[_size];
+        for (size_type i = 0; i < _size; ++i)
+            _data[i] = other._data[i];
+    }
+
     ~vector() {
         delete[] _data;
+    }
+
+    vector &operator=(const vector &other) {
+        vector tmp(other);
+        swap(tmp);
+        return *this;
     }
 
     void assign(size_type count, const T& value) {
@@ -82,6 +100,12 @@ class vector {
         std::swap(_data, temp);
         _size = count;
         delete[] temp;
+    }
+
+    void swap(vector &other) {
+        using std::swap;
+        swap(_size, other._size);
+        swap(_data, other._data);
     }
 
     bool operator==(const vector &other) const {
