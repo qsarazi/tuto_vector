@@ -158,28 +158,8 @@ bool test_copy_assignment() {
 
     return v1 == v2;
 }
+
 /*
-bool test_swap() {
-    vector<int> v1(3, 42);
-    vector<int> v2(2, 24);
-
-    std::swap(v1, v2);
-
-    if (v2.size() != 3)
-        return false;
-    for (size_t i = 0; i < v2.size(); ++i)
-        if (v2[i] != 42)
-            return false;
-    
-    if (v1.size() != 2)
-        return false;
-    for (size_t i = 0; i < v1.size(); ++i)
-        if (v1[i] != 24)
-            return false;
-
-    return true;
-}
-
 bool test_move_constructor() {
     vector<int> v1(3, 42);
     vector<int> v2(std::move(v1));
@@ -223,7 +203,6 @@ std::vector<std::pair<std::string, std::function<bool()>>> test_functions{
     {"test_equal", test_equal},
     {"test_copy_constructor", test_copy_constructor},
     {"test_copy_assignment", test_copy_assignment},
-    // {"test_swap", test_swap},
     // {"test_move_constructor", test_move_constructor},
     // {"test_move_assignement", test_move_assignement},
 };
